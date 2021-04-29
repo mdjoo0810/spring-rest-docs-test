@@ -1,6 +1,7 @@
 package kr.springrestdocstest.service;
 
 import kr.springrestdocstest.model.User;
+import kr.springrestdocstest.model.UserCommand;
 import kr.springrestdocstest.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,13 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User create(User user) {
-        user.setCreatedAt(LocalDateTime.now());
-        return userRepository.save(user);
+    public User create(UserCommand user) {
+        User createUser = new User();
+        createUser.setEmail(user.getEmail());
+        createUser.setAccount(user.getAccount());
+        createUser.setPhoneNumber(user.getPhoneNumber());
+        createUser.setCreatedAt(LocalDateTime.now());
+        return userRepository.save(createUser);
     }
 
     public User read(Long id) {

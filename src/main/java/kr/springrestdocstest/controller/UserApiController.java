@@ -2,19 +2,20 @@ package kr.springrestdocstest.controller;
 
 import kr.springrestdocstest.model.Header;
 import kr.springrestdocstest.model.User;
+import kr.springrestdocstest.model.UserCommand;
 import kr.springrestdocstest.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/user/")
+@RequestMapping("/api/user")
 public class UserApiController {
 
     private final UserService userService;
 
     @PostMapping
-    public Header<User> create(@RequestBody User requestUser) {
+    public Header<User> create(@RequestBody UserCommand requestUser) {
         User user = userService.create(requestUser);
         if (user != null) {
             return Header.OK(user);
@@ -22,7 +23,7 @@ public class UserApiController {
         return Header.ERROR();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Header<User> read(@PathVariable(name = "id") Long id) {
         User user = userService.read(id);
         if (user != null) {
@@ -42,7 +43,7 @@ public class UserApiController {
         return Header.ERROR();
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public Header<User> delete(@PathVariable(name = "id") Long id) {
         boolean isDelete = userService.delete(id);
 

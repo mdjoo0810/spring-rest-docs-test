@@ -1,0 +1,30 @@
+:baseDir: {docdir}/../../../
+:snippets: {baseDir}/build/generated-snippets
+
+= RESTful Notes API Guide
+Aaron Joo;
+:doctype: user
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:sectnums:
+:sectanchors:
+
+[[api]]
+== User API
+
+=== User 한명 불러오기
+include::{snippets}/user_read/curl-request.adoc[]
+include::{snippets}/user_read/http-request.adoc[]
+include::{snippets}/user_read/path-parameters.adoc[]
+include::{snippets}/user_read/http-response.adoc[]
+include::{snippets}/user_read/response-fields.adoc[]
+
+=== User 등록하기
+include::{snippets}/user_create/curl-request.adoc[]
+include::{snippets}/user_create/http-request.adoc[]
+include::{snippets}/user_create/request-fields.adoc[]
+include::{snippets}/user_create/http-response.adoc[]
+include::{snippets}/user_create/response-fields.adoc[]
